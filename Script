@@ -1,0 +1,83 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "MaintenanceScreen"
+gui.IgnoreGuiInset = true
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+
+local bg = Instance.new("Frame")
+bg.Parent = gui
+bg.Size = UDim2.fromScale(1, 1)
+bg.BackgroundColor3 = Color3.fromRGB(10, 10, 18)
+
+local grad = Instance.new("UIGradient")
+grad.Parent = bg
+grad.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(120, 90, 200)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(15, 15, 25))
+}
+grad.Rotation = 135
+
+
+local container = Instance.new("Frame")
+container.Parent = bg
+container.Size = UDim2.fromScale(0.45, 0.45)
+container.Position = UDim2.fromScale(0.5, 0.5)
+container.AnchorPoint = Vector2.new(0.5, 0.5)
+container.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
+container.BackgroundTransparency = 0.1
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 18)
+corner.Parent = container
+
+local stroke = Instance.new("UIStroke")
+stroke.Parent = container
+stroke.Thickness = 1.5
+stroke.Color = Color3.fromRGB(150, 110, 230)
+stroke.Transparency = 0.3
+
+
+local logo = Instance.new("ImageLabel")
+logo.Parent = container
+logo.Image = "rbxassetid://110276288413180"
+logo.Size = UDim2.fromScale(0.25, 0.25)
+logo.Position = UDim2.fromScale(0.5, 0.28)
+logo.AnchorPoint = Vector2.new(0.5, 0.5)
+logo.BackgroundTransparency = 1
+logo.ScaleType = Enum.ScaleType.Fit
+
+
+local title = Instance.new("TextLabel")
+title.Parent = container
+title.Size = UDim2.fromScale(0.9, 0.15)
+title.Position = UDim2.fromScale(0.5, 0.55)
+title.AnchorPoint = Vector2.new(0.5, 0.5)
+title.BackgroundTransparency = 1
+title.Text = "SCRIPT UNDER MAINTENANCE"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 26
+title.TextColor3 = Color3.fromRGB(190, 150, 255)
+
+
+local subtitle = Instance.new("TextLabel")
+subtitle.Parent = container
+subtitle.Size = UDim2.fromScale(0.9, 0.12)
+subtitle.Position = UDim2.fromScale(0.5, 0.68)
+subtitle.AnchorPoint = Vector2.new(0.5, 0.5)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "It will be back soon"
+subtitle.Font = Enum.Font.Gotham
+subtitle.TextSize = 18
+subtitle.TextColor3 = Color3.fromRGB(160, 130, 220)
+
+
+task.delay(5, function()
+	if gui then
+		gui:Destroy()
+	end
+end)
